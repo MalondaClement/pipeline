@@ -38,7 +38,7 @@ class Cityscapes(datasets.Cityscapes):
     classLabels.append('void')
 
     def __init__(self, root, split='train', transform=None, target_transform=None, transforms=None):
-        super(Cityscapes, self).__init__(root, transforms, transform, target_transform)
+        super(datasets.Cityscapes, self).__init__(root, transforms, transform, target_transform)
         self.images_dir = os.path.join(self.root, 'leftImg8bit', split)
         self.targets_dir = os.path.join(self.root, 'gtFine', split)
         self.split = split
