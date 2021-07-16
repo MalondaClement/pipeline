@@ -1,5 +1,5 @@
 #
-#  trainMobileNetDenseASPP.py
+#  trainUNet.py
 #
 #  Created by Clément Malonda on 15/07/2021.
 
@@ -9,8 +9,7 @@ import torch
 from torch import nn
 import torch.optim as optim
 
-from models.MobileNetDenseASPP import DenseASPP
-from models.configs.MobileNetDenseASPP import Model_CFG
+from models.UNet import UNet
 
 from helpers.ARGS import ARGS
 from helpers.helpers import plot_learning_curves
@@ -23,8 +22,8 @@ def main():
     args = ARGS()
     args.epochs = 200
     args.batch_size = 16
-    args.model = "MobileNetDenseASPP"
-    args.save_path = "MobileNetDenseASPP_save"
+    args.model = "UNet"
+    args.save_path = "UNet_save"
     args.is_pytorch_model = False
     args.dataset_path = "cityscapes"
 
@@ -41,7 +40,7 @@ def main():
         os.makedirs(args.save_path + '/results_color_test')
 
     # Set model
-    model = DenseASPP(Model_CFG, n_class=20)
+    model = UNet(n_class=20)
 
     # Check if cuda is available to push model on GPU
     if torch.cuda.is_available():

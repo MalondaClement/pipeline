@@ -1,7 +1,7 @@
 #
-#  trainMobileNetDenseASPP.py
+#  trainFCN.py
 #
-#  Created by Clément Malonda on 15/07/2021.
+#  Created by Clément Malonda on 16/07/2021.
 
 import os
 import torch
@@ -9,8 +9,7 @@ import torch
 from torch import nn
 import torch.optim as optim
 
-from models.MobileNetDenseASPP import DenseASPP
-from models.configs.MobileNetDenseASPP import Model_CFG
+from torchvision.models.segmentation import fcn_resnet101
 
 from helpers.ARGS import ARGS
 from helpers.helpers import plot_learning_curves
@@ -23,9 +22,9 @@ def main():
     args = ARGS()
     args.epochs = 200
     args.batch_size = 16
-    args.model = "MobileNetDenseASPP"
-    args.save_path = "MobileNetDenseASPP_save"
-    args.is_pytorch_model = False
+    args.model = "FCN_Resnet101"
+    args.save_path = "FCN_Resnet101_save"
+    args.is_pytorch_model = True
     args.dataset_path = "cityscapes"
 
     # Get cityscapes dataset and dataloaders
@@ -41,7 +40,7 @@ def main():
         os.makedirs(args.save_path + '/results_color_test')
 
     # Set model
-    model = DenseASPP(Model_CFG, n_class=20)
+    model = fcn_resnet101(num_classes=30)
 
     # Check if cuda is available to push model on GPU
     if torch.cuda.is_available():

@@ -1,5 +1,5 @@
 #
-#  trainMobileNetDenseASPP.py
+#  trainDenseASPP.py
 #
 #  Created by Clément Malonda on 15/07/2021.
 
@@ -9,8 +9,8 @@ import torch
 from torch import nn
 import torch.optim as optim
 
-from models.MobileNetDenseASPP import DenseASPP
-from models.configs.MobileNetDenseASPP import Model_CFG
+from models.DenseASPP import DenseASPP
+from models.configs.DenseASPP121 import Model_CFG
 
 from helpers.ARGS import ARGS
 from helpers.helpers import plot_learning_curves
@@ -23,8 +23,8 @@ def main():
     args = ARGS()
     args.epochs = 200
     args.batch_size = 16
-    args.model = "MobileNetDenseASPP"
-    args.save_path = "MobileNetDenseASPP_save"
+    args.model = "DenseASPP121"
+    args.save_path = "DenseASPP121_save"
     args.is_pytorch_model = False
     args.dataset_path = "cityscapes"
 
