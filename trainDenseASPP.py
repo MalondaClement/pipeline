@@ -41,7 +41,7 @@ def main():
         os.makedirs(args.save_path + '/results_color_test')
 
     # Set model
-    model = DenseASPP(Model_CFG, n_class=20)
+    model = DenseASPP(Model_CFG, n_class=30)
 
     # Check if cuda is available to push model on GPU
     if torch.cuda.is_available():
