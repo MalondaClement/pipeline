@@ -40,7 +40,7 @@ def main():
         os.makedirs(args.save_path + '/results_color_test')
 
     # Set model
-    model = UNet(n_class=30)
+    model = UNet(num_classes=30)
 
     # Check if cuda is available to push model on GPU
     if torch.cuda.is_available():

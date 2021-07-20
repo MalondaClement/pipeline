@@ -9,7 +9,7 @@ import torch.nn as nn
 from collections import OrderedDict
 
 class UNet(nn.Module):
-    def __init__(self, n_classes, batchnorm = False):
+    def __init__(self, num_classes, batchnorm = False):
         super(UNet, self).__init__()
         self.inc = inconv(3, 64, batchnorm)
         self.down1 = down(64, 128, batchnorm)

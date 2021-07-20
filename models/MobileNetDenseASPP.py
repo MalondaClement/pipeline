@@ -13,7 +13,7 @@ class DenseASPP(nn.Module):
     """
     * output_scale can only set as 8 or 16
     """
-    def __init__(self, model_cfg, n_class=19, output_stride=8):
+    def __init__(self, model_cfg, num_classes=19, output_stride=8):
         super(DenseASPP, self).__init__()
         dropout0 = model_cfg['dropout0']
         dropout1 = model_cfg['dropout1']
