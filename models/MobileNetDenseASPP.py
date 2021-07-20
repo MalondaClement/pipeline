@@ -45,7 +45,7 @@ class DenseASPP(nn.Module):
 
         self.classification = nn.Sequential(
             nn.Dropout2d(p=dropout1),
-            nn.Conv2d(in_channels=num_features, out_channels=n_class, kernel_size=1, padding=0),
+            nn.Conv2d(in_channels=num_features, out_channels=num_classes, kernel_size=1, padding=0),
             nn.Upsample(scale_factor=8, mode='bilinear'),
         )
 
