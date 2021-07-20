@@ -66,7 +66,8 @@ class iouCalc():
 
         self.perImageStats  = []
         self.nbPixels       = 0
-        self.confMatrix     = np.zeros(shape=(len(self.validClasses),len(self.validClasses)),dtype=np.ulonglong)
+        # self.confMatrix     = np.zeros(shape=(len(self.validClasses),len(self.validClasses)),dtype=np.ulonglong)
+        self.confMatrix     = np.zeros(shape=(len(self.classLabels),len(self.classLabels)),dtype=np.ulonglong)
 
         # Init IoU log files
         self.headerStr = 'epoch, '
@@ -77,7 +78,8 @@ class iouCalc():
     def clear(self):
         self.perImageStats  = []
         self.nbPixels       = 0
-        self.confMatrix     = np.zeros(shape=(len(self.validClasses),len(self.validClasses)),dtype=np.ulonglong)
+        # self.confMatrix     = np.zeros(shape=(len(self.validClasses),len(self.validClasses)),dtype=np.ulonglong)
+        self.confMatrix     = np.zeros(shape=(len(self.classLabels),len(self.classLabels)),dtype=np.ulonglong)
 
     def getIouScoreForLabel(self, label):
         # Calculate and return IOU score for a particular label (train_id)
