@@ -21,8 +21,8 @@ from learning.utils import get_dataloader
 def main():
     # Set up execution arguments
     args = ARGS()
-    args.epochs = 200
-    args.batch_size = 16
+    args.epochs = 80
+    args.batch_size = 8
     args.model = "DenseASPP121"
     args.save_path = "DenseASPP121_save"
     args.is_pytorch_model = False
@@ -50,7 +50,7 @@ def main():
 
     # Get loss and optimizer functions
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = torch.optim.SGD(model.parameters(), lr=1e-2)
+    optimizer = torch.optim.Adam(model.parameters(), lr=3e-4)
     scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)
 
     best_miou = 0.0

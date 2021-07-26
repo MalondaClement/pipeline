@@ -18,7 +18,7 @@ class Cityscapes(datasets.Cityscapes):
     id2trainid[np.where(id2trainid==255)] = voidClass
 
     # Convert train_ids to colors
-    mask_colors = [list(label.color) for label in datasets.Cityscapes.classes if label.train_id >= 0 and label.train_id <= 19]
+    mask_colors = [list(label.color) for label in datasets.Cityscapes.classes if label.train_id >= 0]# and label.train_id <= 19]
     mask_colors.append([0,0,0])
     mask_colors = np.array(mask_colors)
 
@@ -29,12 +29,12 @@ class Cityscapes(datasets.Cityscapes):
             trainid2id[label.train_id] = label.id
 
     # List of valid class ids
-    validClasses = np.unique([label.train_id for label in datasets.Cityscapes.classes if label.id >= 0])
-    validClasses[np.where(validClasses==255)] = voidClass
+    validClasses = [label.train_id for label in datasets.Cityscapes.classes if label.id >= 0]
+    # validClasses[np.where(validClasses==255)] = voidClass
     validClasses = list(validClasses)
 
     # Create list of class names
-    classLabels = [label.name for label in datasets.Cityscapes.classes if not (label.ignore_in_eval or label.id < 0)]
+    classLabels = [label.name for label in datasets.Cityscapes.classes]# if not (label.ignore_in_eval or label.id < 0)]
     classLabels.append('void')
 
     def __init__(self, root, split='train', transform=None, target_transform=None, transforms=None):
