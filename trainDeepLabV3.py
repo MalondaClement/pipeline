@@ -49,7 +49,7 @@ def main():
 
     # Get loss and optimizer functions
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = torch.optim.SGD(model.parameters(), lr=3e-44)
+    optimizer = torch.optim.SGD(model.parameters(), lr=3e-4)
     scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)
 
     best_miou = 0.0
