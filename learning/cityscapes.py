@@ -32,10 +32,11 @@ class Cityscapes(datasets.Cityscapes):
     validClasses = [label.train_id for label in datasets.Cityscapes.classes if label.id >= 0]
     # validClasses[np.where(validClasses==255)] = voidClass
     validClasses = list(validClasses)
+    validClasses.append(19)
 
     # Create list of class names
     classLabels = [label.name for label in datasets.Cityscapes.classes]# if not (label.ignore_in_eval or label.id < 0)]
-    classLabels.append('void')
+    # classLabels.append('void')
 
     def __init__(self, root, split='train', transform=None, target_transform=None, transforms=None):
         super(datasets.Cityscapes, self).__init__(root, transforms, transform, target_transform)
