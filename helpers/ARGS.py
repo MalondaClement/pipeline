@@ -22,3 +22,4 @@ class ARGS:
     self.epochs = 4
     self.save_path = ""
     self.is_pytorch_model = True
+    self.num_classes = 30
