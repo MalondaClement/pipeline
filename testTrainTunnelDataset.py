@@ -29,7 +29,7 @@ def main():
     args.num_workers = 2
     args.model = "DeepLabV3_Resnet101"
     args.save_path = "DeepLabV3_Resnet101_save"
-    args.is_pytorch_model = True
+    args.is_pytorch_model = False
     args.dataset_path = "tunnel"
     args.num_classes = len(Dataset.validClasses)
 
