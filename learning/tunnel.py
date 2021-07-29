@@ -13,6 +13,9 @@ import matplotlib.pyplot as plt
 classToVal = {"BAU": 1, "Parking" : 2, "SW": 3, "Road": 4}
 
 class Tunnel():
+
+    voidClass = 5
+
     id2trainid = np.array([0,1,2,3,4], dtype="uint8")
 
     mask_colors = np.array([[0,0,0], [81,0,81], [230,150,140], [244,35,232], [128,64,128]])
