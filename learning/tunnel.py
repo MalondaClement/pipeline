@@ -69,6 +69,9 @@ class Tunnel():
         target = np.array(target)[:, :, 0]
         return image, target, filepath
 
+    def __len__(self):
+        return len(self.images)
+
 if __name__ == "__main__":
     dataset = Tunnel
     t = dataset("/Users/ClementMalonda/Desktop/tunnel")
