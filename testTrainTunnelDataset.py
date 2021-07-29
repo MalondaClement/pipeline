@@ -29,7 +29,7 @@ def main():
     args.model = "DeepLabV3_Resnet101"
     args.save_path = "DeepLabV3_Resnet101_save"
     args.is_pytorch_model = True
-    args.dataset_path = "/Users/ClementMalonda/Desktop/tunnel"
+    args.dataset_path = "tunnel"
     args.num_classes = len(Dataset.validClasses)
 
     # Get tunnel dataloaders
