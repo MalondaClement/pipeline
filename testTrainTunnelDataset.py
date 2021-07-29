@@ -71,5 +71,30 @@ def main():
         metrics['train_acc'].append(train_acc)
         print('Epoch {} train loss: {:.4f}, acc: {:.4f}'.format(epoch,train_loss,train_acc))
 
+        val_acc, val_loss, miou = validate_epoch(dataloaders['val'], model, loss_fn, epoch, Dataset.classLabels, Dataset.validClasses, void=Dataset.voidClass, maskColors=Dataset.mask_colors, folder=args.save_path, args=args)
+
+        metrics['val_acc'].append(val_acc)
+        metrics['val_loss'].append(val_loss)
+        metrics['miou'].append(miou)
+
+        torch.save({
+            'epoch': epoch,
+            'model_state_dict': model.state_dict(),
+            'optimizer_state_dict': optimizer.state_dict(),
+            'best_miou': best_miou,
+            'metrics': metrics,
+            }, args.save_path + '/checkpoint.pth.tar')
+
+        if miou > best_miou:
+            print('mIoU improved from {:.4f} to {:.4f}.'.format(best_miou, miou))
+            best_miou = miou
+            torch.save({
+                'epoch': epoch,
+                'model_state_dict': model.state_dict(),
+                }, args.save_path + '/best_weights.pth.tar')
+
+    # Create learning curve with loss, miou and accuracy for each epoch
+    plot_learning_curves(metrics, args)
+
 if __name__ == "__main__":
     main()
