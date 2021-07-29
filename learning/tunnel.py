@@ -65,7 +65,7 @@ class Tunnel():
         for e in self.targets[filepath]:
             print(e, end="\n\n")
             draw.polygon(e[0], fill=classToVal[e[1]])
-        # print(np.array(target)[:,:,0])
+        image = np.array(image)
         target = np.array(target)[:, :, 0]
         return image, target, filepath
 
