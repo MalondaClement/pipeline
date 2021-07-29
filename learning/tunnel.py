@@ -63,9 +63,9 @@ class Tunnel():
         target = Image.new("RGB", (image.size[0], image.size[1]))
         draw = ImageDraw.Draw(target)
         for e in self.targets[filepath]:
-            print(e, end="\n\n")
             draw.polygon(e[0], fill=classToVal[e[1]])
         image = np.array(image)
+        image = image.transpose(2, 0, 1)
         target = np.array(target)[:, :, 0]
         return image, target, filepath
 

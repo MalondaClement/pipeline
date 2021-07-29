@@ -9,7 +9,8 @@ import torch
 from torch import nn
 import torch.optim as optim
 
-from torchvision.models.segmentation import deeplabv3_resnet101
+from models.DenseASPP import DenseASPP
+from models.configs.DenseASPP121 import Model_CFG
 
 from helpers.ARGS import ARGS
 from helpers.helpers import plot_learning_curves
@@ -44,7 +45,7 @@ def main():
         os.makedirs(args.save_path + '/results_color_test')
 
     # Set model
-    model = deeplabv3_resnet101(num_classes=args.num_classes)
+    model = DenseASPP(Model_CFG, num_classes=args.num_classes)
 
     # Check if cuda is available to push model on GPU
     if torch.cuda.is_available():
