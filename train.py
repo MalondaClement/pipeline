@@ -73,8 +73,8 @@ def main():
             best_miou = miou
             torch.save({'epoch': epoch, 'model_state_dict': model.state_dict()}, args.save_path + '/best_weights.pth.tar')
 
-        # Create learning curve with loss, miou and accuracy for each epoch
-        plot_learning_curves(metrics, args)
+    # Create learning curve with loss, miou and accuracy for each epoch
+    plot_learning_curves(metrics, args)
 
 
 if __name__ == "__main__":

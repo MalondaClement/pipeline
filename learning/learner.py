@@ -145,23 +145,6 @@ def validate_epoch(dataloader, model, criterion, epoch, classLabels, validClasse
             # Calculate IoU scores of current batch
             iou.evaluateBatch(preds, labels)
 
-            # Save visualizations of first batch
-            if epoch_step == 0 and maskColors is not None:
-                for i in range(inputs.size(0)):
-                    filename = os.path.splitext(os.path.basename(filepath[i]))[0]
-                    # Only save inputs and labels once
-                    if epoch == 0:
-                        img = visim(inputs[i,:,:,:], args)
-                        label = vislbl(labels[i,:,:], maskColors)
-                        if len(img.shape) == 3:
-                            cv2.imwrite(folder + '/images/{}.png'.format(filename),img[:,:,::-1])
-                        else:
-                            cv2.imwrite(folder + '/images/{}.png'.format(filename),img)
-                        cv2.imwrite(folder + '/images/{}_gt.png'.format(filename),label[:,:,::-1])
-                    # Save predictions
-                    pred = vislbl(preds[i,:,:], maskColors)
-                    cv2.imwrite(folder + '/images/{}_epoch_{}.png'.format(filename,epoch),pred[:,:,::-1])
-
             # measure elapsed time
             batch_time.update(time.time() - end)
             end = time.time()
