@@ -25,10 +25,10 @@ def main():
     # Set up execution arguments
     args = ARGS()
     args.epochs = 4
-    args.batch_size = 2
+    args.batch_size = 3
     args.num_workers = 2
-    args.model = "DeepLabV3_Resnet101"
-    args.save_path = "DeepLabV3_Resnet101_save"
+    args.model = "DenseASPP121"
+    args.save_path = "DeepLabV3Resnet101_save"
     args.is_pytorch_model = False
     args.dataset_path = "tunnel"
     args.num_classes = len(Dataset.validClasses)
@@ -54,7 +54,7 @@ def main():
 
     # Get loss and optimizer functions
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = torch.optim.SGD(model.parameters(), lr=3e-4)
+    optimizer = torch.optim.Adam(model.parameters(), lr=3e-4)
     scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)
 
     best_miou = 0.0

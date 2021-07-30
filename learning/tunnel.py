@@ -56,9 +56,6 @@ class Tunnel():
                 file.close()
 
 
-
-
-
     def __getitem__(self, index):
         filepath = self.images[index]
         image = Image.open(filepath).convert("RGB")
