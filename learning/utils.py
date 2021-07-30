@@ -102,13 +102,13 @@ def get_dataloader(dataset, args):
     dataloaders = {}
     dataloaders['train'] = torch.utils.data.DataLoader(trainset,
                batch_size=args.batch_size, shuffle=True,
-               pin_memory=args.pin_memory, num_workers=args.num_workers)
+               pin_memory=args.pin_memory, num_workers=args.num_workers, drop_last=True)
     dataloaders['val'] = torch.utils.data.DataLoader(valset,
                batch_size=args.batch_size, shuffle=False,
-               pin_memory=args.pin_memory, num_workers=args.num_workers)
+               pin_memory=args.pin_memory, num_workers=args.num_workers, drop_last=True)
     dataloaders['test'] = torch.utils.data.DataLoader(testset,
                batch_size=args.batch_size, shuffle=False,
-               pin_memory=args.pin_memory, num_workers=args.num_workers)
+               pin_memory=args.pin_memory, num_workers=args.num_workers, drop_last=True)
 
     return dataloaders
 
