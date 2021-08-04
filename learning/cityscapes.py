@@ -38,7 +38,7 @@ class Cityscapes(datasets.Cityscapes):
     classLabels = [label.name for label in datasets.Cityscapes.classes]# if not (label.ignore_in_eval or label.id < 0)]
     # classLabels.append('void')
 
-    def __init__(self, root, split='train', transform=None, target_transform=None, transforms=None):
+    def __init__(self, root, split='train', labels_type="label", transform=None, target_transform=None, transforms=None):
         super(datasets.Cityscapes, self).__init__(root, transforms, transform, target_transform)
         self.images_dir = os.path.join(self.root, 'leftImg8bit', split)
         self.targets_dir = os.path.join(self.root, 'gtFine', split)

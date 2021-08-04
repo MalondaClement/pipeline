@@ -96,9 +96,9 @@ def get_dataloader(dataset, args):
 
         return image, mask
 
-    trainset = dataset(args.dataset_path, split='train', transforms=train_trans)
-    valset = dataset(args.dataset_path, split='val', transforms=test_trans)
-    testset = dataset(args.dataset_path, split='test', transforms=test_trans)
+    trainset = dataset(args.dataset_path, split='train', labels_type=args.labels_type, transforms=train_trans)
+    valset = dataset(args.dataset_path, split='val', labels_type=args.labels_type, transforms=test_trans)
+    testset = dataset(args.dataset_path, split='test', tlabels_type=args.labels_type, ransforms=test_trans)
     dataloaders = {}
     dataloaders['train'] = torch.utils.data.DataLoader(trainset,
                batch_size=args.batch_size, shuffle=True,

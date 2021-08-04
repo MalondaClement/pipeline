@@ -24,7 +24,7 @@ class Tunnel():
 
     classLabels = ["Background", "BAU", "Parking", "SW", "Road"]
 
-    def __init__(self, root, split="train", transform=None, target_transform=None, transforms=None):
+    def __init__(self, root, split="train", labels_type="csv", transform=None, target_transform=None, transforms=None):
         self.root = root
         self.transform = transform
         self.target_transform = target_transform

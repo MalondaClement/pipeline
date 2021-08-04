@@ -21,7 +21,7 @@ def main():
     Dataset = Tunnel
 
     # Set up execution arguments
-    args = ARGS("DenseASPP121", "batch_17", len(Dataset.validClasses), labels_type="csv", batch_size=2, epochs=10)
+    args = ARGS("DeepLabV3_Resnet50", "batch_17", len(Dataset.validClasses), labels_type="csv", batch_size=2, epochs=10)
 
     # Get model
     model, args = get_model(args)
