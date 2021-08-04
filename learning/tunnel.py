@@ -4,6 +4,7 @@
 #  Created by Clément Malonda on 28/07/2021.
 
 import os
+import re
 import json
 import numpy as np
 import pandas as pd
