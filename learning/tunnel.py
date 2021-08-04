@@ -81,7 +81,7 @@ class Tunnel():
                 file.close()
 
     def __read_csv(self):
-        datas = pd.read_csv(os.path.join(self.target_dir, "all.csv")
+        datas = pd.read_csv(os.path.join(self.target_dir, "all.csv"))
         exp1 = re.compile("/A[0123456789]")
         exp2 = re.compile(".png")
         image_name = ""
