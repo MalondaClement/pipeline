@@ -34,12 +34,13 @@ class Tunnel():
         self.split = split
         self.images = list()
         self.targets = dict()
+        self.labels_type = labels_type
 
         assert split in ["train","val","test"], "Unknown value {} for argument split.".format(split)
-        if args.labels_type == "json":
+        if self.labels_type == "json":
             self.target_dir = os.path.join(self.root, "jsons")
             self.__read_csv()
-        elif args.labels_type == "csv":
+        elif self.labels_type == "csv":
             self.target_dir = os.path.join(self.root, "csvs")
             self.__read_csv()
         else :
