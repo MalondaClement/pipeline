@@ -40,9 +40,11 @@ class Tunnel():
 
         assert split in ["train","val","test"], "Unknown value {} for argument split.".format(split)
         if self.labels_type == "json":
+            print("json")
             self.target_dir = os.path.join(self.root, "jsons")
             self.__read_csv()
         elif self.labels_type == "csv":
+            print("csv")
             self.target_dir = os.path.join(self.root, "csvs")
             self.__read_csv()
         else :
@@ -85,6 +87,7 @@ class Tunnel():
 
     def __read_csv(self):
         datas = pd.read_csv(os.path.join(self.target_dir, "all.csv"))
+        print("open {}".format(os.path.join(self.target_dir, "all.csv")))
         exp1 = re.compile("/A[0123456789]")
         exp2 = re.compile(".png")
         image_name = ""
