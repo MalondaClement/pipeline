@@ -97,7 +97,7 @@ class Tunnel():
                 tmp = data[1][2][i+1:j]
                 if tmp != image_name :
                     if image_name != "":
-                        self.targets.update({os.path.join(self.images_dir, target_data["name"]) :  poly})
+                        self.targets.update({os.path.join(self.images_dir, image_name) :  poly})
                     image_name = tmp
                     poly = list()
                 if type(data[1][5]) == type(" ") :
