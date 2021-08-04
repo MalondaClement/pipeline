@@ -4,7 +4,7 @@
 #  Created by Clément Malonda on 13/07/2021.
 
 class ARGS:
-  def __init__(self, model, dataset_path, num_classes, batch_size=8, epochs=80):
+  def __init__(self, model, dataset_path, num_classes, labels_type, batch_size=8, epochs=80):
     self.dataset_path = dataset_path
     self.batch_size = batch_size
     self.pin_memory = True
@@ -23,3 +23,4 @@ class ARGS:
     self.save_path = ""
     self.is_pytorch_model = True
     self.num_classes = 30
+    self.labels_type = labels_type
