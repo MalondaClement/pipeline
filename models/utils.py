@@ -10,22 +10,22 @@ from datetime import date
 def get_model(args):
     if args.model == "DeepLabV3_Resnet50":
         from torchvision.models.segmentation import deeplabv3_resnet50
-        model = deeplabv3_resnet50(num_classes = args.num_classes)
+        model = deeplabv3_resnet50(pretrained=False, num_classes = args.num_classes)
         args.is_pytorch_model = True
 
     elif args.model == "DeepLabV3_Resnet101":
         from torchvision.models.segmentation import deeplabv3_resnet101
-        model = deeplabv3_resnet101(num_classes = args.num_classes)
+        model = deeplabv3_resnet101(pretrained=False, num_classes = args.num_classes)
         args.is_pytorch_model = True
 
     elif args.model == "FCN_Resnet50":
         from torchvision.models.segmentation import fcn_resnet50
-        model = fcn_resnet50(num_classes = args.num_classes)
+        model = fcn_resnet50(pretrained=False, num_classes = args.num_classes)
         args.is_pytorch_model = True
 
     elif args.model == "FCN_Resnet101":
         from torchvision.models.segmentation import fcn_resnet101
-        model = fcn_resnet101(num_classes = args.num_classes)
+        model = fcn_resnet101(pretrained=False, num_classes = args.num_classes)
         args.is_pytorch_model = True
 
     elif args.model == "UNet":
