@@ -33,6 +33,8 @@ class Tunnel():
         self.transforms = transforms
 
         self.images_dir = os.path.join(self.root, "images", split)
+        if split=="val":
+            self.images_dir = os.path.join(self.root, "images", "test")
         self.split = split
         self.images = list()
         self.targets = dict()
