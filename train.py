@@ -13,8 +13,8 @@ from models.utils import get_model
 from helpers.ARGS import ARGS
 from helpers.helpers import plot_learning_curves
 from learning.learner import train_epoch, validate_epoch
-from learning.tunnel import Tunnel
 from learning.utils import get_dataloader
+from datasets.tunnel import Tunnel
 
 def main():
     # Get tunnel dataset

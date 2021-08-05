@@ -10,7 +10,7 @@ from PIL import Image
 from PIL import ImageDraw
 import matplotlib.pyplot as plt
 
-from learning.tunnel import classToVal
+from datasets.tunnel import classToVal
 
 # Dataset tree must be like :
 #
