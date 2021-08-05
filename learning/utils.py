@@ -130,7 +130,7 @@ def rand_bbox(size, lam):
     return bbx1, bby1, bbx2, bby2
 
 
-def copyblob(src_img, src_mask, dst_img, dst_mask, src_class, dst_class, validClasses):
+def copyblob( validClasses, src_img, src_mask, dst_img, dst_mask, src_class, dst_class):
     mask_hist_src, _ = np.histogram(src_mask.numpy().ravel(), len(validClasses)-1, [0, len(validClasses)-1])
     mask_hist_dst, _ = np.histogram(dst_mask.numpy().ravel(), len(validClasses)-1, [0, len(validClasses)-1])
 

@@ -45,13 +45,13 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
                 for i in range(inputs.size()[0]):
                     rand_idx = np.random.randint(inputs.size()[0])
                     # wall(3) --> sidewalk(1)
-                    copyblob(src_img=inputs[i], src_mask=labels[i], dst_img=inputs[rand_idx], dst_mask=labels[rand_idx], src_class=3, dst_class=1, validClasses)
+                    copyblob(validClasses, src_img=inputs[i], src_mask=labels[i], dst_img=inputs[rand_idx], dst_mask=labels[rand_idx], src_class=3, dst_class=1)
                     # fence(4) --> sidewalk(1)
-                    copyblob(src_img=inputs[i], src_mask=labels[i], dst_img=inputs[rand_idx], dst_mask=labels[rand_idx], src_class=4, dst_class=1, validClasses)
+                    copyblob(validClasses, src_img=inputs[i], src_mask=labels[i], dst_img=inputs[rand_idx], dst_mask=labels[rand_idx], src_class=4, dst_class=1)
                     # bus(15) --> road(0)
-                    copyblob(src_img=inputs[i], src_mask=labels[i], dst_img=inputs[rand_idx], dst_mask=labels[rand_idx], src_class=15, dst_class=0, validClasses)
+                    copyblob(validClasses, src_img=inputs[i], src_mask=labels[i], dst_img=inputs[rand_idx], dst_mask=labels[rand_idx], src_class=15, dst_class=0)
                     # train(16) --> road(0)
-                    copyblob(src_img=inputs[i], src_mask=labels[i], dst_img=inputs[rand_idx], dst_mask=labels[rand_idx], src_class=16, dst_class=0, validClasses)
+                    copyblob(validClasses, src_img=inputs[i], src_mask=labels[i], dst_img=inputs[rand_idx], dst_mask=labels[rand_idx], src_class=16, dst_class=0)
 
             inputs = inputs.float().cuda()
             labels = labels.long().cuda()

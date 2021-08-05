@@ -50,7 +50,7 @@ def main():
     # Training loop
     for epoch in range(args.epochs):
         # Train the model for an epoch
-        train_loss, train_acc = train_epoch(dataloaders["train"], model, loss_fn, optimizer, scheduler, epoch, args=args)
+        train_loss, train_acc = train_epoch(dataloaders["train"], model, loss_fn, optimizer, scheduler, epoch, Dataset.validClasses, args=args)
 
         # Save trains metrics
         metrics['train_loss'].append(train_loss)
