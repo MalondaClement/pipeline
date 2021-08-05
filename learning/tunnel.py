@@ -32,7 +32,7 @@ class Tunnel():
         self.target_transform = target_transform
         self.transforms = transforms
 
-        self.images_dir = os.path.join(self.root, "images")
+        self.images_dir = os.path.join(self.root, split, "images")
         self.split = split
         self.images = list()
         self.targets = dict()
@@ -95,6 +95,8 @@ class Tunnel():
                 i, _ = p1.span()
                 _, j = p2.span()
                 tmp = data[1][2][i+1:j]
+                if tmp not in os.listdir(self.images_dir):
+                    continue
                 if tmp != image_name :
                     if image_name != "":
                         self.images.append(os.path.join(self.images_dir, image_name))
