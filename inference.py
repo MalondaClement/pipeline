@@ -12,16 +12,16 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 from helpers.ARGS import ARGS
-from learning.tunnel import Tunnel
-from models.utils import get_model
 from helpers.helpers import vislbl
+from datasets.tunnel import Tunnel
+from models.utils import get_model
 
 def main():
     # Get tunnel dataset
     Dataset = Tunnel
 
     # Set up execution arguments
-    args = ARGS("DenseASPP121", "tunnel", len(Dataset.validClasses), labels_type="csv", batch_size=2, epochs=10)
+    args = ARGS("DenseASPP121", "tunnel", len(Dataset.validClasses), labels_type="csv", batch_size=2, epochs=2)
 
     model, args = get_model(args)
 

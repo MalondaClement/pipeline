@@ -29,15 +29,16 @@ The train script create a new directory for each execution using the date.
 ## Pipeline architecture
 
 * 📁 pipeline/
+    * 📁 datasets/
+        * 📄 cityscapes.py
+        * 📄 minicity.py
+        * 📄 tunnel.py
     * 📁 helpers/
         * 📄 ARGS.py
         * 📄 helpers.py
         * 📄 labels.py
     * 📁 learning/
-        * 📄 cityscapes.py
-        * 📄 minicity.py
         * 📄 learner.py
-        * 📄 tunnel.py
         * 📄 utils.py
     * 📁 models/
         * 📁 configs/

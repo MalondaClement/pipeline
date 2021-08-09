@@ -22,5 +22,5 @@ class ARGS:
     self.epochs = epochs
     self.save_path = ""
     self.is_pytorch_model = True
-    self.num_classes = 30
+    self.num_classes = num_classes
     self.labels_type = labels_type

@@ -13,8 +13,8 @@ from models.utils import get_model
 from helpers.ARGS import ARGS
 from helpers.helpers import plot_learning_curves
 from learning.learner import train_epoch, validate_epoch
-from learning.tunnel import Tunnel
 from learning.utils import get_dataloader
+from datasets.tunnel import Tunnel
 
 def main():
     # Get tunnel dataset
@@ -50,7 +50,7 @@ def main():
     # Training loop
     for epoch in range(args.epochs):
         # Train the model for an epoch
-        train_loss, train_acc = train_epoch(dataloaders["train"], model, loss_fn, optimizer, scheduler, epoch, args=args)
+        train_loss, train_acc = train_epoch(dataloaders["train"], model, loss_fn, optimizer, scheduler, epoch, Dataset.validClasses, args=args)
 
         # Save trains metrics
         metrics['train_loss'].append(train_loss)

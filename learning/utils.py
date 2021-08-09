@@ -11,8 +11,6 @@ import torchvision.transforms.functional as TF
 import torch.nn.functional as F
 from torch.autograd import Variable
 
-from learning.minicity import MiniCity
-
 # Getter function for dataloaders
 def get_dataloader(dataset, args):
     #args = args
@@ -132,9 +130,9 @@ def rand_bbox(size, lam):
     return bbx1, bby1, bbx2, bby2
 
 
-def copyblob(src_img, src_mask, dst_img, dst_mask, src_class, dst_class):
-    mask_hist_src, _ = np.histogram(src_mask.numpy().ravel(), len(MiniCity.validClasses)-1, [0, len(MiniCity.validClasses)-1])
-    mask_hist_dst, _ = np.histogram(dst_mask.numpy().ravel(), len(MiniCity.validClasses)-1, [0, len(MiniCity.validClasses)-1])
+def copyblob( validClasses, src_img, src_mask, dst_img, dst_mask, src_class, dst_class):
+    mask_hist_src, _ = np.histogram(src_mask.numpy().ravel(), len(validClasses)-1, [0, len(validClasses)-1])
+    mask_hist_dst, _ = np.histogram(dst_mask.numpy().ravel(), len(validClasses)-1, [0, len(validClasses)-1])
 
     if mask_hist_src[src_class] != 0 and mask_hist_dst[dst_class] != 0:
         """ copy src blob and paste to any dst blob"""
