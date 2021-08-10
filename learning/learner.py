@@ -45,13 +45,13 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             print(type(labels))
             print(inputs.shape)
             print(labels.shape)
-            img = inputs[0,:,:,:]
-            target = labels[0,:,:]
-            img = np.moveaxis(img, 0, -1)
-            target = target.moveaxis(img, 0, -1)
-            plt.imshow(img)
-            plt.imshow(target, alpha=0.65)
-            plt.show()
+            images = inputs.numpy()
+            targets = labels.numpy()
+            print(images.shape)
+            print(targets.shape)
+            # plt.imshow(img)
+            # plt.imshow(target, alpha=0.65)
+            # plt.show()
 
             if args.copyblob:
                 for i in range(inputs.size()[0]):
