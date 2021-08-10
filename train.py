@@ -22,7 +22,7 @@ def main():
     Dataset = MiniCity
 
     # Set up execution arguments
-    args = ARGS("DeepLabV3_Resnet50", "microcity", len(Dataset.validClasses), labels_type="csv", batch_size=4, epochs=40)
+    args = ARGS("DeepLabV3_Resnet50", "microcity", len(Dataset.validClasses), labels_type="csv", batch_size=2, epochs=40)
 
     # Get model
     model, args = get_model(args)
