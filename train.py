@@ -22,7 +22,7 @@ def main():
     Dataset = MiniCity
 
     # Set up execution arguments
-    args = ARGS("DenseASPP121", "minicity", len(Dataset.validClasses), labels_type="csv", batch_size=4, epochs=10)
+    args = ARGS("DenseASPP121", "minicity", len(Dataset.validClasses), labels_type="csv", batch_size=2, epochs=10)
 
     # Get model
     model, args = get_model(args)
