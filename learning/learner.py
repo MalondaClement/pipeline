@@ -46,7 +46,7 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             print(inputs.shape)
             print(labels.shape)
             img = inputs[0,:,:,:]
-            target = labels[0,:,:,:]
+            target = labels[0,:,:]
             img = np.moveaxis(img, 0, -1)
             target = target.moveaxis(img, 0, -1)
             plt.imshow(img)
