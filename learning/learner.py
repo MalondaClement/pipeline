@@ -43,6 +43,7 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             data_time.update(time.time()-end)
             print(type(inputs))
             print(type(labels))
+            print(inputs.shape)
             # plt.imshow(inputs)
             # plt.imshow(labels, alpha=0.65)
             # plt.show()
