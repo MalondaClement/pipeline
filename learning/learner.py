@@ -41,20 +41,20 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
         # Iterate over data.
         for epoch_step, (inputs, labels, _) in enumerate(dataloader):
             data_time.update(time.time()-end)
-            print(type(inputs))
-            print(type(labels))
-            print(inputs.shape)
-            print(labels.shape)
-            images = inputs.numpy()
-            targets = labels.numpy()
-            print(images.shape)
-            print(targets.shape)
-            image = images[0, :, :, :]
-            target = targets[0, :, :]
-            image = image.transpose(1, 2, 0)
-            plt.imshow(image)
-            plt.imshow(target, alpha=0.65)
-            plt.show()
+            # print(type(inputs))
+            # print(type(labels))
+            # print(inputs.shape)
+            # print(labels.shape)
+            # images = inputs.numpy()
+            # targets = labels.numpy()
+            # print(images.shape)
+            # print(targets.shape)
+            # image = images[0, :, :, :]
+            # target = targets[0, :, :]
+            # image = image.transpose(1, 2, 0)
+            # plt.imshow(image)
+            # plt.imshow(target, alpha=0.65)
+            # plt.show()
 
             if args.copyblob:
                 for i in range(inputs.size()[0]):

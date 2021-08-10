@@ -14,14 +14,15 @@ from helpers.ARGS import ARGS
 from helpers.helpers import plot_learning_curves
 from learning.learner import train_epoch, validate_epoch
 from learning.utils import get_dataloader
-from datasets.tunnel import Tunnel
+# from datasets.tunnel import Tunnel
+from datasets.minicity import MiniCity
 
 def main():
     # Get tunnel dataset
-    Dataset = Tunnel
+    Dataset = MiniCity
 
     # Set up execution arguments
-    args = ARGS("DeepLabV3_Resnet50", "batch_17", len(Dataset.validClasses), labels_type="csv", batch_size=4, epochs=1)
+    args = ARGS("DenseASPP121", "minicity", len(Dataset.validClasses), labels_type="csv", batch_size=4, epochs=10)
 
     # Get model
     model, args = get_model(args)
