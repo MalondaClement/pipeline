@@ -59,7 +59,7 @@ def main():
         print('Epoch {} train loss: {:.4f}, acc: {:.4f}'.format(epoch,train_loss,train_acc))
 
         # Validate epoch
-        val_acc, val_loss, miou = validate_epoch(dataloaders['test'], model, loss_fn, epoch, Dataset.classLabels, Dataset.validClasses, void=Dataset.voidClass, maskColors=Dataset.mask_colors, folder=args.save_path, args=args)
+        val_acc, val_loss, miou = validate_epoch(dataloaders['val'], model, loss_fn, epoch, Dataset.classLabels, Dataset.validClasses, void=Dataset.voidClass, maskColors=Dataset.mask_colors, folder=args.save_path, args=args)
 
         # Save val metrics
         metrics['val_acc'].append(val_acc)
