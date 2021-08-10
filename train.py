@@ -19,7 +19,7 @@ from datasets.minicity import MiniCity
 
 def main():
     # Get tunnel dataset
-    Dataset = Tunnel
+    Dataset = MiniCity
 
     # Set up execution arguments
     args = ARGS("DeepLabV3_Resnet50", "microcity", len(Dataset.validClasses), labels_type="csv", batch_size=4, epochs=40)
