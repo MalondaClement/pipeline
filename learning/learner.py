@@ -49,9 +49,12 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             targets = labels.numpy()
             print(images.shape)
             print(targets.shape)
-            # plt.imshow(img)
-            # plt.imshow(target, alpha=0.65)
-            # plt.show()
+            image = images[0, :, :, :]
+            target = targets[0, :, :]
+            image = image.transpose(1, 2, 0)
+            plt.imshow(image)
+            plt.imshow(target, alpha=0.65)
+            plt.show()
 
             if args.copyblob:
                 for i in range(inputs.size()[0]):
