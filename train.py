@@ -22,7 +22,7 @@ def main():
     Dataset = MiniCity
 
     # Set up execution arguments
-    args = ARGS("DenseASPP121", "minicity", len(Dataset.validClasses), labels_type="csv", batch_size=2, epochs=10)
+    args = ARGS("DeepLabV3_Resnet50", "minicity", len(Dataset.validClasses), labels_type="csv", batch_size=2, epochs=10)
 
     # Get model
     model, args = get_model(args)
@@ -42,7 +42,7 @@ def main():
     # TODO: add loss optim and sheduler in get_model
     # Get loss and optimizer functions
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=3e-4)
+    optimizer = torch.optim.SGD(model.parameters(), lr=3e-4)
     scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)
 
     best_miou = 0.0
