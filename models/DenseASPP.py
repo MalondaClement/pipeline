@@ -108,7 +108,7 @@ class DenseASPP(nn.Module):
 
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
-                nn.init.kaiming_uniform(m.weight.data)
+                nn.init.kaiming_uniform_(m.weight.data)
 
             elif isinstance(m, nn.BatchNorm2d):
                 m.weight.data.fill_(1)
