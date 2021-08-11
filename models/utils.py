@@ -18,6 +18,11 @@ def get_model(args):
         model = deeplabv3_resnet101(pretrained=False, num_classes = args.num_classes)
         args.is_pytorch_model = True
 
+    elif args.model == "DeepLabV3_MobileNetV3":
+        from torchvision.models.segmentation import deeplabv3_mobilenet_v3_large
+        model = deeplabv3_mobilenet_v3_large(pretrained=False, num_classes = args.num_classes)
+        args.is_pytorch_model = True
+
     elif args.model == "FCN_Resnet50":
         from torchvision.models.segmentation import fcn_resnet50
         model = fcn_resnet50(pretrained=False, num_classes = args.num_classes)
@@ -68,6 +73,7 @@ def get_model(args):
         print("Models can only be : \
                 \n\t- DeepLabV3_Resnet50 (pytorch)\
                 \n\t- DeepLabV3_Resnet101 (pytorch)\
+                \n\t- DeepLabV3_MobileNetV3 (pytorch)\
                 \n\t- FCN_Resnet50 (pytorch)\
                 \n\t- FCN_Resnet101 (pytorch)\
                 \n\t- UNet (external)\
