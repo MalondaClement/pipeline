@@ -24,13 +24,12 @@ def main():
     args = ARGS("DenseASPP121", "tunnel", len(Dataset.validClasses), labels_type="csv", batch_size=2, epochs=2)
 
     model, args = get_model(args)
+    args.save_path = "save/DeepLabV3_Resnet50/2021-08-12-1628756459"
 
-    checkpoint = torch.load("save/DenseASPP121/2021-08-02-1627891784/best_weights.pth.tar", map_location=torch.device('cpu'))
+    checkpoint = torch.load(os.path.join(args.save_path, "best_weights.pth.tar", map_location=torch.device('cpu'))
 
-    args.save_path = os.path.join("inference", "DenseASPP121/2021-08-02-1627891784")
-
-    if not os.path.isdir(args.save_path):
-        os.makedirs(args.save_path)
+    if not os.path.isdir(os.path.join(args.save_path, "inference")):
+        os.makedirs(os.path.join(args.save_path, "inference"))
 
     state = checkpoint["model_state_dict"]
     new_state = {}
@@ -73,7 +72,7 @@ def main():
         ax2.imshow(img)
         ax2.imshow(pred_color, alpha=0.6)
         ax2.set_title("Superposition de l'image avec la prédiction")
-        fig.savefig(os.path.join("inference", "DenseASPP121/2021-08-02-1627891784", file))
+        fig.savefig(os.path.join(args.save_path, "inference", file))
 
     mean = int(np.mean(times))
     print("Temps d'inférence moyen sur les images : {} min  {} s".format(int(mean/60), mean%60))

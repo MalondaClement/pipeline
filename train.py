@@ -14,14 +14,15 @@ from helpers.ARGS import ARGS
 from helpers.helpers import plot_learning_curves
 from learning.learner import train_epoch, validate_epoch
 from learning.utils import get_dataloader
-from datasets.tunnel import Tunnel
+# from datasets.tunnel import Tunnel
+from datasets.minicity import MiniCity
 
 def main():
     # Get tunnel dataset
-    Dataset = Tunnel
+    Dataset = MiniCity
 
     # Set up execution arguments
-    args = ARGS("DeepLabV3_Resnet50", "batch_17", len(Dataset.validClasses), labels_type="csv", batch_size=4, epochs=300)
+    args = ARGS("DeepLabV3_MobileNetV3", "microcity", len(Dataset.validClasses), labels_type="csv", batch_size=2, epochs=40)
 
     # Get model
     model, args = get_model(args)
@@ -41,7 +42,7 @@ def main():
     # TODO: add loss optim and sheduler in get_model
     # Get loss and optimizer functions
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=3e-4)
+    optimizer = torch.optim.SGD(model.parameters(), lr=3e-4)
     scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)
 
     best_miou = 0.0
@@ -58,7 +59,7 @@ def main():
         print('Epoch {} train loss: {:.4f}, acc: {:.4f}'.format(epoch,train_loss,train_acc))
 
         # Validate epoch
-        val_acc, val_loss, miou = validate_epoch(dataloaders['test'], model, loss_fn, epoch, Dataset.classLabels, Dataset.validClasses, void=Dataset.voidClass, maskColors=Dataset.mask_colors, folder=args.save_path, args=args)
+        val_acc, val_loss, miou = validate_epoch(dataloaders['val'], model, loss_fn, epoch, Dataset.classLabels, Dataset.validClasses, void=Dataset.voidClass, maskColors=Dataset.mask_colors, folder=args.save_path, args=args)
 
         # Save val metrics
         metrics['val_acc'].append(val_acc)

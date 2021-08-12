@@ -12,6 +12,7 @@ import os
 import numpy as np
 import time
 from PIL import Image
+import matplotlib.pyplot as plt
 
 
 # Function used to train the model on one epoch
@@ -40,7 +41,6 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
         # Iterate over data.
         for epoch_step, (inputs, labels, _) in enumerate(dataloader):
             data_time.update(time.time()-end)
-
             if args.copyblob:
                 for i in range(inputs.size()[0]):
                     rand_idx = np.random.randint(inputs.size()[0])

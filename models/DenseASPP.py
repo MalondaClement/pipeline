@@ -14,7 +14,7 @@ class DenseASPP(nn.Module):
     """
     * output_scale can only set as 8 or 16
     """
-    def __init__(self, model_cfg, num_classes=19, output_stride=8):
+    def __init__(self, model_cfg, num_classes=19, output_stride=16):
         super(DenseASPP, self).__init__()
         bn_size = model_cfg['bn_size']
         drop_rate = model_cfg['drop_rate']
@@ -108,7 +108,7 @@ class DenseASPP(nn.Module):
 
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
-                nn.init.kaiming_uniform(m.weight.data)
+                nn.init.kaiming_uniform_(m.weight.data)
 
             elif isinstance(m, nn.BatchNorm2d):
                 m.weight.data.fill_(1)
