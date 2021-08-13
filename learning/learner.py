@@ -48,6 +48,7 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             image = images[0, :, :, :]
             image = image.transpose(1, 2, 0)
             ax0.imshow(image)
+            ax2.imshow(image)
             ax0.set_title("Image d'origine")
             print(type(inputs))
             print(inputs.shape)
@@ -92,7 +93,7 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             ax1.imshow(pred)
             ax1.set_title("Prédiction")
             ax2.imshow(pred)
-            ax2.imshow(pred, alpha=0.6)
+            ax2.imshow(pred, alpha=0.5)
             ax2.set_title("Superposition de l'image avec la prédiction")
             if not os.path.isdir(os.path.join(args.save_path, "inference")):
                 os.makedirs(os.path.join(args.save_path, "inference"))
