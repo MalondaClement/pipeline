@@ -72,6 +72,8 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             if args.is_pytorch_model :
                 outputs = outputs['out'] #FIXME for DeepLab V3
             preds = torch.argmax(outputs, 1)
+            print(type(preds))
+            # print(type(preds))
             # cross-entropy loss
             loss = criterion(outputs, labels)
 
