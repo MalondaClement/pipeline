@@ -82,7 +82,7 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             #test
             print(type(preds))
             print(preds.shape)
-            pred = preds[0, :, :]
+            pred = preds[0, :, :].cpu()
             plt.imshow(pred)
             plt.show()
             # end test
