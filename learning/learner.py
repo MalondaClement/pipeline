@@ -43,8 +43,8 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             data_time.update(time.time()-end)
 
             #test
-            print(type(preds))
-            print(preds.shape)
+            print(type(inputs))
+            print(inputs.shape)
             #end test
 
             if args.copyblob:
