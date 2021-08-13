@@ -41,6 +41,12 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
         # Iterate over data.
         for epoch_step, (inputs, labels, _) in enumerate(dataloader):
             data_time.update(time.time()-end)
+
+            #test
+            print(type(preds))
+            print(preds.shape)
+            #end test
+
             if args.copyblob:
                 for i in range(inputs.size()[0]):
                     rand_idx = np.random.randint(inputs.size()[0])
@@ -72,8 +78,15 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             if args.is_pytorch_model :
                 outputs = outputs['out'] #FIXME for DeepLab V3
             preds = torch.argmax(outputs, 1)
+
+            #test
             print(type(preds))
             print(preds.shape)
+            pred = preds[0, :, :]
+            plt.imshow(pred)
+            plt.show()
+            # end test
+
             # cross-entropy loss
             loss = criterion(outputs, labels)
 
