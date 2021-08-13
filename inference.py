@@ -50,9 +50,11 @@ def main():
         img = Image.open(os.path.join("images_inf_path",file))
         img = np.array(img)
         img = img[:,:,:3]
+        img = img/255
 
         input = ToTensor()(img)
         input = input.unsqueeze(0)
+        input = input.float()
         with torch.no_grad():
             output = model(input)
         if args.is_pytorch_model:
