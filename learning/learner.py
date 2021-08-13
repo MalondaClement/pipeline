@@ -44,7 +44,7 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
 
             #test
             fig, (ax0, ax1, ax2) = plt.subplots(1, 3)
-            image = inputs.numpy()
+            images = inputs.numpy()
             image = images[0, :, :, :]
             image = image.transpose(1, 2, 0)
             ax0.imshow(inputs[0, :, :, :])
