@@ -92,7 +92,6 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             pred = preds[0, :, :].cpu()
             ax1.imshow(pred)
             ax1.set_title("Prédiction")
-            ax2.imshow(pred)
             ax2.imshow(pred, alpha=0.5)
             ax2.set_title("Superposition de l'image avec la prédiction")
             if not os.path.isdir(os.path.join(args.save_path, "inference")):
