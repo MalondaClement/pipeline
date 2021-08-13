@@ -62,6 +62,8 @@ class Tunnel():
             draw.polygon(e[0], fill=classToVal[e[1]])
         image = np.array(image)
         image = image.transpose(2, 0, 1)
+        # int to float to fix training
+        image = image/255
         target = np.array(target)[:, :, 0]
         return image, target, filepath
 
