@@ -21,14 +21,16 @@ def main():
     Dataset = Tunnel
 
     # Set up execution arguments
-    args = ARGS("DenseASPP121", "tunnel", len(Dataset.validClasses), labels_type="csv", batch_size=2, epochs=2)
+    args = ARGS("DeepLabV3_Resnet50", "tunnel", len(Dataset.validClasses), labels_type="csv", batch_size=2, epochs=2)
 
     model, args = get_model(args)
-    args.save_path = "save/DeepLabV3_Resnet50/2021-08-12-1628756459"
+    args.save_path = "path"
 
-    checkpoint = torch.load(os.path.join(args.save_path, "best_weights.pth.tar", map_location=torch.device('cpu'))
+    checkpoint = torch.load(os.path.join(args.save_path, "best_weights.pth.tar"), map_location=torch.device('cpu'))
 
-    if not os.path.isdir(os.path.join(args.save_path, "inference")):
+    print("Model {} à l'epoch {} ".format(args.model, checkpoint["epoch"]))
+
+    if not os.path.isdir(os.path.join(args.save_path, "inference")) :
         os.makedirs(os.path.join(args.save_path, "inference"))
 
     state = checkpoint["model_state_dict"]
@@ -42,10 +44,10 @@ def main():
     times = list()
 
     start = time.time()
-    for i, file in enumerate(os.listdir("tunnel/images")):
+    for i, file in enumerate(os.listdir("images_inf_path")):
         start = time.time()
 
-        img = Image.open(os.path.join("tunnel/images",file))
+        img = Image.open(os.path.join("images_inf_path",file))
         img = np.array(img)
         img = img[:,:,:3]
 
@@ -76,7 +78,7 @@ def main():
 
     mean = int(np.mean(times))
     print("Temps d'inférence moyen sur les images : {} min  {} s".format(int(mean/60), mean%60))
-    plt.show()
+    # plt.show()
 
 if __name__ == "__main__":
     main()
