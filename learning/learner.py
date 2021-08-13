@@ -94,7 +94,7 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             ax2.imshow(pred)
             ax2.imshow(pred, alpha=0.6)
             ax2.set_title("Superposition de l'image avec la prédiction")
-            if not os.isdir(os.path.join(args.save_path, "inference")):
+            if not os.path.isdir(os.path.join(args.save_path, "inference")):
                 os.makedirs(os.path.join(args.save_path, "inference"))
             fig.savefig(os.path.join(args.save_path, "inference", str(epoch)+".png"))
             # end test
