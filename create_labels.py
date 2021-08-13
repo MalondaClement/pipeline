@@ -65,7 +65,24 @@ def read_csv(path, split="train"):
     return images, labels
 
 def read_json(path, split="train"):
-    pass
+    images = list()
+    labels = dict()
+    for e in os.listdir(os.path.join(path, "jsons")):
+        if e[-5:] == ".json":
+            file = open(os.path.join(self.target_dir, e))
+            targets_data = json.load(file)
+            for target_data in targets_data:
+                if target_data["name"] in os.listdir(os.path.join(path, "images", split)):
+                    images.append(os.path.join(path, "images", split, target_data["name"]))
+                    poly = list()
+                    for label in target_data["labels"]["polygonLabels"]:
+                        x = np.array(label["allX"], dtype="int32")
+                        y = np.array(label["allY"], dtype="int32")
+                        points = list(zip(x, y))
+                        poly.append((points, label["labelValue"]))
+                    labels.update({os.path.join(self.images_dir, target_data["name"]) :  poly})
+            file.close()
+    return images, labels
 
 def from_poly_to_labels(images, poly):
     for filepath in images:
@@ -96,8 +113,8 @@ def create_labels(path, classToValDict, labels_type="csv", erase=True):
         os.makedirs(os.path.join(path, "labels"))
 
     if labels_type == "csv":
-        # images, labels = read_csv(path, split="train")
-        # from_poly_to_labels(images, labels)
+        images, labels = read_csv(path, split="train")
+        from_poly_to_labels(images, labels)
         images, labels = read_csv(path, split="test")
         from_poly_to_labels(images, labels)
 
