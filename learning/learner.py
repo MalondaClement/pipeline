@@ -43,6 +43,9 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             data_time.update(time.time()-end)
 
             #test
+            fig, (ax0, ax1, ax2) = plt.subplots(1, 3)
+            ax0.imshow(inputs[0, :, :, :])
+            ax0.set_title("Image d'origine")
             print(type(inputs))
             print(inputs.shape)
             #end test
@@ -83,8 +86,12 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             print(type(preds))
             print(preds.shape)
             pred = preds[0, :, :].cpu()
-            plt.imshow(pred)
-            plt.show()
+            ax1.imshow(pred)
+            ax1.set_title("Prédiction")
+            ax2.imshow(pred)
+            ax2.imshow(pred, alpha=0.6)
+            ax2.set_title("Superposition de l'image avec la prédiction")
+            fig.savefig(os.path.join(args.save_path, "inference", str(epoch)+".png"))
             # end test
 
             # cross-entropy loss

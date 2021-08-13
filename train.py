@@ -22,7 +22,7 @@ def main():
     Dataset = Tunnel
 
     # Set up execution arguments
-    args = ARGS("DeepLabV3_MobileNetV3", "tunnel", len(Dataset.validClasses), labels_type="json", batch_size=2, epochs=2)
+    args = ARGS("DeepLabV3_MobileNetV3", "tunnel", len(Dataset.validClasses), labels_type="json", batch_size=4, epochs=60)
 
     # Get model
     model, args = get_model(args)
