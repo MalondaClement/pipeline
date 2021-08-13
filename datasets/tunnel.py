@@ -43,7 +43,7 @@ class Tunnel():
         assert split in ["train","val","test"], "Unknown value {} for argument split.".format(split)
         if self.labels_type == "json":
             self.target_dir = os.path.join(self.root, "jsons")
-            self.__read_csv()
+            self.__read_json()
         elif self.labels_type == "csv":
             self.target_dir = os.path.join(self.root, "csvs")
             self.__read_csv()
