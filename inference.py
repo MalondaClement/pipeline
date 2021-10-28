@@ -24,7 +24,7 @@ def main():
     args = ARGS("DeepLabV3_Resnet50", "tunnel", len(Dataset.validClasses), labels_type="csv", batch_size=2, epochs=2)
 
     model, args = get_model(args)
-    args.save_path = "path"
+    args.save_path = "../"
 
     checkpoint = torch.load(os.path.join(args.save_path, "best_weights.pth.tar"), map_location=torch.device('cpu'))
 
@@ -44,15 +44,19 @@ def main():
     times = list()
 
     start = time.time()
-    for i, file in enumerate(os.listdir("images_inf_path")):
+    for i, file in enumerate(os.listdir("/Users/ClementMalonda/Desktop/img_inf")):
+        if file[-4:] != ".png":
+            continue
         start = time.time()
 
-        img = Image.open(os.path.join("images_inf_path",file))
+        img = Image.open(os.path.join("/Users/ClementMalonda/Desktop/img_inf",file))
         img = np.array(img)
         img = img[:,:,:3]
+        img = img/255
 
         input = ToTensor()(img)
         input = input.unsqueeze(0)
+        input = input.float()
         with torch.no_grad():
             output = model(input)
         if args.is_pytorch_model:
