@@ -9,7 +9,7 @@ You can read the documentation [here](https://github.com/MalondaClement/pipeline
 
 ## 2. How to use the pipeline
 
-```python
+```bash
 git clone https://github.com/MalondaClement/pipeline.git
 ```
 

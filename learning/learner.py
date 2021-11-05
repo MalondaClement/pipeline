@@ -41,6 +41,19 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
         # Iterate over data.
         for epoch_step, (inputs, labels, _) in enumerate(dataloader):
             data_time.update(time.time()-end)
+
+            #test
+            fig, (ax0, ax1, ax2) = plt.subplots(1, 3)
+            images = inputs.numpy()
+            image = images[0, :, :, :]
+            image = image.transpose(1, 2, 0)
+            ax0.imshow(image)
+            ax2.imshow(image)
+            ax0.set_title("Image d'origine")
+            print(type(inputs))
+            print(inputs.shape)
+            #end test
+
             if args.copyblob:
                 for i in range(inputs.size()[0]):
                     rand_idx = np.random.randint(inputs.size()[0])
@@ -72,6 +85,20 @@ def train_epoch(dataloader, model, criterion, optimizer, lr_scheduler, epoch, va
             if args.is_pytorch_model :
                 outputs = outputs['out'] #FIXME for DeepLab V3
             preds = torch.argmax(outputs, 1)
+
+            #test
+            print(type(preds))
+            print(preds.shape)
+            pred = preds[0, :, :].cpu()
+            ax1.imshow(pred)
+            ax1.set_title("Prédiction")
+            ax2.imshow(pred, alpha=0.5)
+            ax2.set_title("Superposition de l'image avec la prédiction")
+            if not os.path.isdir(os.path.join(args.save_path, "inference")):
+                os.makedirs(os.path.join(args.save_path, "inference"))
+            fig.savefig(os.path.join(args.save_path, "inference", str(epoch)+".png"))
+            # end test
+
             # cross-entropy loss
             loss = criterion(outputs, labels)
 
